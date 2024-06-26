@@ -4,3 +4,13 @@ from datetime import datetime
 
 app = Flask(__name__)
 
+
+def init_db():
+    with sqlite3.connect('plants.db') as conn:
+        conn.execute('''
+        CREATE TBALE IF NOT EXIST plants (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        name TEXT NOT NULL,
+        last_watered TEXT))
+        )
+ ''') 
