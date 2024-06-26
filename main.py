@@ -32,3 +32,11 @@ def add():
         conn.execute('INSERT INTO plants (name, species) VALUES (?, ?)', (name, species))
     return redirect(url_for('home'))
 
+
+@app.route('/water/<int:id>')
+def water(id):
+    with sqlite3.connect('plants.db') as conn:
+        conn.execute('UPDATE plants SET last_watered = ? WHERE = id ?' , (datetime.utcnow(), id))
+    return redirect(url_for('home'))
+
+
